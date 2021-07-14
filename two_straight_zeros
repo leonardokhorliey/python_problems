@@ -1,0 +1,29 @@
+def checker(array):
+  row_number_arr = [] ## initialize list to hold row index of zeros from input array
+  col_number_arr = [] ## initialize list to hold column index of zeros from input array
+  comb_arr = [] ## initialize list to hold a combined value of row and column indices
+  occ_count = 0 
+
+  for i in range(len(array)):
+    for j in range(len(array[i])):
+      if array[i][j] == 0:
+        row_number_arr.append(i)
+        col_number_arr.append(j)
+
+
+  for i in range(len(row_number_arr)):
+  
+    ## create combined value as an integer concatenation of the row and column indices of zero occurences 
+    k = row_number_arr[i] * 10**len(str(col_number_arr[i])) + col_number_arr[i]
+    comb_arr.append(k)
+
+
+  for i in range(len(comb_arr)):
+    ## check that consecutive row numbers or column numbers, and not both at the same time, exists in the combined values list and increase occurence count
+    if comb_arr[i] + (10**len(str(col_number_arr[i]))) in comb_arr:
+      occ_count += 1
+    
+    if comb_arr[i] + 1 in comb_arr: 
+      occ_count += 1 ##and not((comb_arr.contains(comb_arr[i] + (10**len(str(col_number_arr[i])))) and comb_arr.contains(comb_arr[i] + 1)))*/
+
+  return occ_count
