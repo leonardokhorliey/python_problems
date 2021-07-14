@@ -1,0 +1,20 @@
+
+## define new function to collect list as parameter
+def checkmax(lis):
+
+    ## create list with indices of 0 in the input list
+    list1 = [i for i in range(len(lis)) if lis[i] == 0]
+    
+    ## new list with the difference between consecutive index values of 0 from list1. This corresponds to the interval between consecutive zeros in the input list, lis.
+    result_list = [list1[i] - list1[i-1] for i in range(1, len(list1))]
+    
+    ## implement iterator to get maximum value from result_list. This is the largest interval between zeros
+    check = result_list[0]
+    for i in range(1, len(result_list)):
+    
+        ## check if an element is larger than the previous largest and update the check to the new largest. 
+        if i > check:
+            check = i
+            
+     
+    return check - 1 ##length of consecutive ones is one less than interval between their immediate surrounding zeros.
